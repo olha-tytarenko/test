@@ -12,6 +12,7 @@ export class SignIn extends Component {
     e.preventDefault();
 
     console.log('submit');
+    this.props.signIn('test@test.com', 'test_test');
   }
 
   render() {
