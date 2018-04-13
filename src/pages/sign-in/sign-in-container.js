@@ -8,4 +8,4 @@ const mapDispatchToProps = {
   signIn,
 };
 
-export const SignInContainer = connect(null, mapDispatchToProps)(SignIn);
+export const SignInContainer = withRouter(connect(null, mapDispatchToProps)(SignIn));

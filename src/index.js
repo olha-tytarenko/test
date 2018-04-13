@@ -3,23 +3,33 @@ import ReactDOM from 'react-dom';
 import { createBrowserHistory } from 'history';
 import { Router } from 'react-router';
 import { Provider } from 'react-redux';
+import { routerMiddleware } from 'react-router-redux';
 import { apiMiddleware } from 'redux-api-middleware';
 import thunk from 'redux-thunk';
 import {
   createStore,
   applyMiddleware,
+  combineReducers,
 } from 'redux';
 
 import { usersListReducer } from './pages/users-list/users-list-reducer';
+import { userInfoReducer } from './reducers';
 import App from './app';
 
 const history = createBrowserHistory();
+const middlewareForRouting = routerMiddleware(history);
 const createStoreWithMiddleware = applyMiddleware(
   apiMiddleware,
   thunk,
+  middlewareForRouting,
 )(createStore);
 
-const store = createStoreWithMiddleware(usersListReducer);
+const reducer = combineReducers({
+  usersList: usersListReducer,
+  user: userInfoReducer,
+});
+
+const store = createStoreWithMiddleware(reducer);
 window.store = store;
 
 ReactDOM.render(

@@ -1,0 +1,12 @@
+body, html {
+  min-height: 100%;
+}
+
+input, button {
+  outline: none;
+  border: none;
+}
+
+button:hover {
+  cursor: pointer;
+}
