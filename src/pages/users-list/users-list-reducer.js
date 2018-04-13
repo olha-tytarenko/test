@@ -1,10 +1,10 @@
 import * as actionsType from './actions/types';
 
-export const usersListReducer = (state = {}, action) => {
+export const usersListReducer = (state = { users: [] }, action) => {
   switch (action.type) {
     case actionsType.SAVE_USERS:
       return {
-        users: action.payload,
+        users: [...state.users, ...action.payload],
       };
     case actionsType.ADD_USER_TO_LIST:
       return {

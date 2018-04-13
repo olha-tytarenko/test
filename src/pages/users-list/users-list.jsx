@@ -1,8 +1,29 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import { Modal } from './components';
 
 export class UserList extends Component {
+  static get propTypes() {
+    return {
+      authorizedUser: PropTypes.object,
+      usersList: PropTypes.array,
+      createUser: PropTypes.func,
+      signOut: PropTypes.func,
+      deleteUser: PropTypes.func,
+    };
+  }
+
+  static get defaultProps() {
+    return {
+      authorizedUser: {},
+      usersList: [],
+      createUser: () => {},
+      signOut: () => {},
+      deleteUser: () => {},
+    };
+  }
+
   constructor(props) {
     super(props);
 

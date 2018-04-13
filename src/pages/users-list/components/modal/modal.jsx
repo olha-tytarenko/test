@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import './modal.css';
 
 export class Modal extends Component {
+  static get propTypes() {
+    return {
+      submitHandler: PropTypes.func.isRequired,
+      hideModal: PropTypes.func.isRequired,
+    };
+  }
+
   constructor(props) {
     super(props);
 

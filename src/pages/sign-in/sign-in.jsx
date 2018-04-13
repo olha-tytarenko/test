@@ -1,7 +1,21 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import './sign-in.css';
 
 export class SignIn extends Component {
+  static get propTypes() {
+    return {
+      signIn: PropTypes.func,
+    };
+  }
+
+  static get defaultProps() {
+    return {
+      signIn: () => {},
+    };
+  }
+
   constructor(props) {
     super(props);
 

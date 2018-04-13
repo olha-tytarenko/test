@@ -13,7 +13,7 @@ import {
 } from 'redux';
 
 import { usersListReducer } from './pages/users-list/users-list-reducer';
-import { userInfoReducer } from './reducers';
+import { signInReducer } from './pages/sign-in/sign-in-reducer';
 import App from './app';
 
 const history = createBrowserHistory();
@@ -26,7 +26,7 @@ const createStoreWithMiddleware = applyMiddleware(
 
 const reducer = combineReducers({
   usersList: usersListReducer,
-  user: userInfoReducer,
+  user: signInReducer,
 });
 
 const store = createStoreWithMiddleware(reducer);
