@@ -18,9 +18,8 @@ export const getAllUsers = (page = 1, pageSize = 10) => (dispatch) => {
           type: 'SUCCESS',
           payload: (_, __, res) => {
             res.json().then((data) => {
-              console.log(data);
-              console.log(page);
               dispatch(saveUsers(data.data));
+
               if (data.pagination.pageCount !== page) {
                 dispatch(getAllUsers(page + 1, pageSize));
               }

@@ -1,0 +1,64 @@
+.header {
+  background-color: #3E2723;
+}
+
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.user-info {
+  color: #D7CCC8;
+  padding: 20px 0;
+}
+
+.sign-out {
+  color: #D7CCC8;
+  text-decoration: none;
+}
+
+.user-info__name {
+  padding-bottom: 10px;
+}
+
+.users-list {
+  width: 60%;
+  margin: 0 auto
+}
+
+.user-list__item {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0 0;
+}
+
+.user-list__item__description {
+  color: #4E342E;
+}
+
+.user-info__name,
+.user-info__email {
+  font-size: 18px;
+}
+
+.user-list-container {
+  text-align: center;
+}
+
+.delete-button {
+  padding: 5px;
+}
+
+.add-button {
+  padding: 5px 10px;
+  margin-top: 10px;
+}
+
+.delete-button,
+.add-button {
+  background-color: #D7CCC8;
+  border-radius: 3px;
+}

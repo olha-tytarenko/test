@@ -11,15 +11,14 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: thistle;
+  background-color: #3E2723;
   width: 40%;
 }
 
 .create-user-from {
   display: flex;
   flex-direction: column;
-  padding: 20px;
-  padding-top: 40px;
+  padding: 40px 20px 30px;
 }
 
 .form-control-item {
@@ -39,5 +38,12 @@
 
 .create-button {
   padding: 5px 0;
-  background-color: snow;
+  background-color: #D7CCC8;
+  margin-top: 10px;
+}
+
+.modal,
+.form-control-item,
+.create-button {
+  border-radius: 3px;
 }

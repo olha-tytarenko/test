@@ -19,7 +19,6 @@ export class Modal extends Component {
 
   validateAndSave(event) {
     event.preventDefault();
-    console.log(event.target.userName);
 
     const {
       userName,

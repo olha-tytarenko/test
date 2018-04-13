@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { Modal } from './components';
+import './users-list.css';
 
 export class UserList extends Component {
   static get propTypes() {
@@ -11,6 +12,7 @@ export class UserList extends Component {
       createUser: PropTypes.func,
       signOut: PropTypes.func,
       deleteUser: PropTypes.func,
+      clearUsersList: PropTypes.func,
     };
   }
 
@@ -21,6 +23,7 @@ export class UserList extends Component {
       createUser: () => {},
       signOut: () => {},
       deleteUser: () => {},
+      clearUsersList: () => {},
     };
   }
 
@@ -35,6 +38,12 @@ export class UserList extends Component {
     this.hideModal = this.hideModal.bind(this);
     this.showModal = this.showModal.bind(this);
     this.signOut = this.signOut.bind(this);
+  }
+
+  componentWillMount() {
+    if (!this.props.authorizedUser.name) {
+      this.props.signOut();
+    }
   }
 
   createUser(user) {
@@ -56,6 +65,8 @@ export class UserList extends Component {
   signOut(event) {
     event.preventDefault();
 
+    this.props.clearUsersList();
+    this.props.clearUser();
     this.props.signOut();
   }
 
@@ -67,31 +78,46 @@ export class UserList extends Component {
 
     return (
       <div className="users-list-page">
-        <header>
-          <div className="userInfo">
-            <p className="userInfo__name">Hello, {authorizedUser.name}</p>
-            <p className="userInfo__email">Email: {authorizedUser.email}</p>
+        <header className="header">
+          <div className="header__container">
+            <div className="user-info">
+              <p className="user-info__name">Hello, {authorizedUser.name}</p>
+              <p className="user-info__email">Email: {authorizedUser.email}</p>
+            </div>
+            <a onClick={this.signOut} href="" className="sign-out">Sign out</a>
           </div>
-          <a onClick={this.signOut} href="">Sign out</a>
         </header>
-        <section className="users-list">
-          <ul>
+        <section className="user-list-container">
+          <h1>Users</h1>
+          <ul className="users-list">
             {usersList && usersList.map((userItem) => {
               return (
-                <li key={userItem.id.toString()}>
-                  Name: {userItem.name}, email: {userItem.email}
-                  <button onClick={() => this.props.deleteUser(userItem.id)}>Delete</button>
+                <li key={userItem.id.toString()} className="user-list__item">
+                  <span className="user-list__item__description">
+                    Name: {userItem.name}, email: {userItem.email}
+                  </span>
+                  <button
+                    onClick={() => this.props.deleteUser(userItem.id)}
+                    className="delete-button"
+                  >
+                    Delete
+                  </button>
                 </li>
               );
             })}
           </ul>
-          <Modal
-            submitHandler={this.createUser}
-            isModalVisible={this.state.isModalVisible}
-            hideModal={this.hideModal}
-          />
-          <button onClick={this.showModal}>Create user</button>
+          <button
+            onClick={this.showModal}
+            className="add-button"
+          >
+            Create user
+          </button>
         </section>
+        <Modal
+          submitHandler={this.createUser}
+          isModalVisible={this.state.isModalVisible}
+          hideModal={this.hideModal}
+        />
       </div>
     );
   }

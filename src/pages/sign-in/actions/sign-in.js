@@ -23,7 +23,6 @@ export const signIn = (email, password) => (dispatch) => {
           type: 'SUCCESS',
           payload: (_, __, res) => {
             res.json().then((data) => {
-              console.log(data.access_token);
               const { user } = data;
               dispatch(saveUser({
                 id: user.id,

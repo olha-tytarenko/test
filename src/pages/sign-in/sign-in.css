@@ -1,3 +1,41 @@
-.sign-in {
-  background-color: ghostwhite;
+.sign-in-page {
+  min-height: 100%;
+  background-color:#3E2723;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sign-in-content {
+  background-color: #fff;
+  border-radius: 3px;
+  width: 40%;
+  margin: 0 auto;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+.form__input {
+  background-color: #D7CCC8;
+}
+
+.form__sign-in-button {
+  background-color: #3E2723;
+  color: #fff;
+}
+
+.form__input,
+.form__sign-in-button {
+  padding: 10px;
+  border-radius: 3px;
+  margin: 0 20px 20px;
+}
+
+.sign-in-content__heading {
+  font-size: 20px;
+  text-align: center;
+  padding: 20px 0;
+  color: #4E342E;
 }

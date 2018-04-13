@@ -17,8 +17,7 @@ export const deleteUser = id => (dispatch) => {
         {
           type: 'SUCCESS',
           payload: (_, __, res) => {
-            res.json().then((data) => {
-              console.log(data);
+            res.json().then(() => {
               dispatch(removeUserFromList(id));
             });
           },

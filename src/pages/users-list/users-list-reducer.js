@@ -14,6 +14,10 @@ export const usersListReducer = (state = { users: [] }, action) => {
       return {
         users: state.users.filter(user => user.id !== action.payload),
       };
+    case actionsType.CLEAR_USERS_LIST:
+      return {
+        users: [],
+      };
     default:
       return state;
   }

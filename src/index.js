@@ -30,7 +30,6 @@ const reducer = combineReducers({
 });
 
 const store = createStoreWithMiddleware(reducer);
-window.store = store;
 
 ReactDOM.render(
   <Provider store={store}>
