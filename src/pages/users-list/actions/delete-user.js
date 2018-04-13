@@ -1,13 +1,13 @@
 import { RSAA } from 'redux-api-middleware';
 
-import { DELETE_UDER_URL } from '../../../constants';
+import { DELETE_USER_URL } from '../../../constants';
 import { removeUserFromList } from './remove-user-from-list';
 
 export const deleteUser = id => (dispatch) => {
   const token = localStorage.getItem('access_token');
   const action = {
     [RSAA]: {
-      endpoint: DELETE_UDER_URL(id),
+      endpoint: DELETE_USER_URL(id),
       method: 'DELETE',
       headers: {
         Authorization: `Bearer ${token}`,
@@ -19,7 +19,7 @@ export const deleteUser = id => (dispatch) => {
           payload: (_, __, res) => {
             res.json().then((data) => {
               console.log(data);
-              // dispatch(removeUserFromList(id));
+              dispatch(removeUserFromList(id));
             });
           },
         },

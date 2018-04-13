@@ -1,7 +1,7 @@
 import { RSAA } from 'redux-api-middleware';
 
 import { CREATE_USER_URL } from '../../../constants';
-import { getAllUsers } from './get-all-users';
+import { addUserToList } from './add-user-to-list';
 
 export const createUser = user => (dispatch) => {
   const token = localStorage.getItem('access_token');
@@ -20,8 +20,12 @@ export const createUser = user => (dispatch) => {
           type: 'SUCCESS',
           payload: (_, __, res) => {
             res.json().then((data) => {
-              console.log(data);
-              dispatch(getAllUsers());
+              const newUser = {
+                email: data.email,
+                name: data.name,
+                id: data.id,
+              };
+              dispatch(addUserToList(newUser));
             });
           },
         },

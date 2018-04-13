@@ -10,8 +10,14 @@ export class UserList extends Component {
       isModalVisible: false,
     };
 
+    this.createUser = this.createUser.bind(this);
     this.hideModal = this.hideModal.bind(this);
     this.showModal = this.showModal.bind(this);
+    this.signOut = this.signOut.bind(this);
+  }
+
+  createUser(user) {
+    this.props.createUser(user);
   }
 
   hideModal() {
@@ -24,6 +30,12 @@ export class UserList extends Component {
     this.setState({
       isModalVisible: true,
     });
+  }
+
+  signOut(event) {
+    event.preventDefault();
+
+    this.props.signOut();
   }
 
   render() {
@@ -39,7 +51,7 @@ export class UserList extends Component {
             <p className="userInfo__name">Hello, {authorizedUser.name}</p>
             <p className="userInfo__email">Email: {authorizedUser.email}</p>
           </div>
-          <a onClick={this.props.signOut} href="">Sign out</a>
+          <a onClick={this.signOut} href="">Sign out</a>
         </header>
         <section className="users-list">
           <ul>
@@ -53,7 +65,7 @@ export class UserList extends Component {
             })}
           </ul>
           <Modal
-            submitHandler={this.props.createUser}
+            submitHandler={this.createUser}
             isModalVisible={this.state.isModalVisible}
             hideModal={this.hideModal}
           />

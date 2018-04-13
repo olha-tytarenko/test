@@ -6,9 +6,13 @@ export const usersListReducer = (state = {}, action) => {
       return {
         users: action.payload,
       };
+    case actionsType.ADD_USER_TO_LIST:
+      return {
+        users: [action.payload, ...state.users],
+      };
     case actionsType.REMOVE_USER_FROM_LIST:
       return {
-        users: state.filter(user => user.id !== action.payload),
+        users: state.users.filter(user => user.id !== action.payload),
       };
     default:
       return state;

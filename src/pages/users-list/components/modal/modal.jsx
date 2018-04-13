@@ -18,14 +18,15 @@ export class Modal extends Component {
       password,
     } = event.target;
 
-    if (userName && email && password) {
-      const newUser = {
-        name: userName.value,
-        email: email.value,
-        password: password.value,
-      };
+    const newUser = {
+      name: userName.value,
+      email: email.value,
+      password: password.value,
+    };
 
+    if (newUser.name && newUser.email && newUser.password) {
       this.props.submitHandler(newUser);
+      this.props.hideModal();
     }
   }
 
@@ -43,13 +44,13 @@ export class Modal extends Component {
             <input
               type="email"
               placeholder="Email"
-              email="email"
+              name="email"
               className="form-control-item"
             />
             <input
               type="password"
               placeholder="Password"
-              password="password"
+              name="password"
               className="form-control-item"
             />
             <button className="create-button">Create</button>

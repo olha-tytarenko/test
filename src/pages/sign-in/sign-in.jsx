@@ -8,11 +8,17 @@ export class SignIn extends Component {
     this.submitHandler = this.submitHandler.bind(this);
   }
 
-  submitHandler(e) {
-    e.preventDefault();
+  submitHandler(event) {
+    event.preventDefault();
 
-    console.log('submit');
-    this.props.signIn('test@test.com', 'test_test');
+    const userCredentials = {
+      email: event.target.email.value,
+      password: event.target.password.value,
+    };
+
+    if (userCredentials.email && userCredentials.password) {
+      this.props.signIn(userCredentials.email, userCredentials.password);
+    }
   }
 
   render() {
@@ -20,8 +26,8 @@ export class SignIn extends Component {
       <div className="sign-in">
         <h1>Sign in</h1>
         <form onSubmit={this.submitHandler}>
-          <input type="email" placeholder="Email" />
-          <input type="password" placeholder="Password" />
+          <input type="email" placeholder="Email" name="email" />
+          <input type="password" placeholder="Password" name="password" />
           <button>Sign in</button>
         </form>
       </div>
